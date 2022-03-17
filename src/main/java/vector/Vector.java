@@ -10,7 +10,20 @@ public class Vector {
     public boolean validPosition(int position){
         return position >= 0 && position <= studentTotal;
     }
+
+    public void hasSpace(){
+        if (studentTotal == students.length){
+            Student[] newArray = new Student[studentTotal * 2];
+
+            for(int i = 0; i < studentTotal; i++){
+                newArray[i] = students[i];
+            }
+        this.students = newArray;
+        }
+    }
+
     public void add(int position, Student student){
+        this.hasSpace();
         if(!validPosition(position)){
             throw new IllegalArgumentException("Invalid Position");
         }
@@ -22,6 +35,7 @@ public class Vector {
     }
 
     public void add(Student student){
+        this.hasSpace();
         this.students[this.studentTotal] = student;
         this.studentTotal++;
     }
@@ -29,6 +43,7 @@ public class Vector {
     public boolean occupiedPosition(int position){
             return position >= 0 && position < this.studentTotal;
         }
+
     public Student get(int position){
         if(!occupiedPosition(position)){
             throw new IllegalArgumentException("Invalid position");

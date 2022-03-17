@@ -24,5 +24,11 @@ public class VectorTest {
         System.out.println(list);
         list.remove(1);
         System.out.println(list);
+
+        for(int index = 0; index < 300; index++){
+            Student newStudent = new Student("jeo");
+            list.add(newStudent);
+        }
+        System.out.println(list);
     }
 }
